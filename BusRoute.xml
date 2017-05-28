@@ -1,31 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>   
-<BusRoute>  
-    <book category="cooking">  
-        <title lang="en">Everyday Italian</title>  
-        <author>Giada De Laurentiis</author>  
-        <year>2005</year>  
-        <price>30.00</price>  
-    </book>  
-    <book category="children">  
-        <title lang="en">Harry Potter</title>  
-        <author>J K. Rowling</author>  
-        <year>2005</year>  
-        <price>29.99</price>  
-    </book>  
-    <book category="web">  
-        <title lang="en">XQuery Kick Start</title>  
-        <author>James McGovern</author>  
-        <author>Per Bothner</author>  
-        <author>Kurt Cagle</author>  
-        <author>James Linn</author>  
-        <author>Vaidyanathan Nagarajan</author>  
-        <year>2003</year>  
-        <price>49.99</price>  
-    </book>  
-    <book category="web" cover="paperback">  
-        <title lang="en">Learning XML</title>  
-        <author>Erik T. Ray</author>  
-        <year>2003</year>  
-        <price>39.95</price>  
-    </book>  
+<BusRoute>
+    <Bus>
+        <Number>4号线</Number>
+        <Route>
+            <Stop>
+                <Name>武汉站</Name>
+                <Distance>0</Distance>
+            </Stop>
+            <Stop>
+                <Name>圆林路</Name>
+                <Distance>10</Distance>
+            </Stop>
+            <Stop>
+                <Name>中南路</Name>
+                <Distance>20</Distance>
+            </Stop>
+            <Stop>
+                <Name>武昌火车站</Name>
+                <Distance>30</Distance>
+            </Stop>
+            <Stop>
+                <Name>黄金口</Name>
+                <Distance>40</Distance>
+            </Stop>
+        </Route>
+    </Bus>
+    <Bus>
+        <Number>2号线</Number>
+        <Route>
+            <Stop>
+                <Name>光谷大道</Name>
+                <Distance>0</Distance>
+            </Stop>
+            <Stop>
+                <Name>街道口</Name>
+                <Distance>10</Distance>
+            </Stop>
+            <Stop>
+                <Name>中南路</Name>
+                <Distance>20</Distance>
+            </Stop>
+            <Stop>
+                <Name>江汉路</Name>
+                <Distance>30</Distance>
+            </Stop>
+            <Stop>
+                <Name>金银潭</Name>
+                <Distance>40</Distance>
+            </Stop>
+        </Route>
+    </Bus>
+    <Bus>
+        <Number>1号线</Number>
+        <Route>
+            <Stop>
+                <Name>人民广场</Name>
+                <Distance>0</Distance>
+            </Stop>
+            <Stop>
+                <Name>武昌火车站</Name>
+                <Distance>10</Distance>
+            </Stop>
+            <Stop>
+                <Name>江汉路</Name>
+                <Distance>20</Distance>
+            </Stop>
+            <Stop>
+                <Name>中山公园</Name>
+                <Distance>30</Distance>
+            </Stop>
+        </Route>
+    </Bus> 
 </BusRoute>

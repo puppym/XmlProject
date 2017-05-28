@@ -22,5 +22,5 @@ AC_LANG_POP([C++])
 #checks for typedefs, structures, and complier characteristics.
 
 #checks for library functions.
-AC_CONFIG_FILES([Makefile])
+AC_CONFIG_FILES([Makefile test/Makefile])
 AC_OUTPUT
