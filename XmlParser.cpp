@@ -45,6 +45,21 @@ std::string XmlParser::GetStopNameByIndex(int num)
     return "";
 }
 
+std::list<std::string>& XmlParser::GetMinRoute()
+{
+    return AllRouteMap[IndexRoute-1];
+}
+
+int XmlParser::GetMinDistant()
+{
+    return MinDistant;
+}
+
+int XmlParser::GetMinRouteIndex()
+{
+    return IndexRoute;
+}
+
 void XmlParser::ReadXml(const char *FilePath)
 {
     TBSYS_LOGGER.setFileName("XMLParser.log.txt",true);
@@ -209,6 +224,10 @@ int XmlParser::FindBusRoute(std::string start, std:: string end)
 	if(-1 == startIndex || -1 == endIndex)
 	{
 		std::cout << "该起始站点不在计划的公交线路类!" << std::endl;
+        //没有查找到该公交站点
+        MinDistant = -1;
+        return 0;
+
 	}
 	return FindBusRouteByIndex(startIndex,endIndex,0);
 }
@@ -227,8 +246,6 @@ int XmlParser::FindBusRouteByIndex(int start, int end, int distant)
 		//起始站点和终点站点一样的话有客户端进行校验
 		//添加到总共的路线中去
 		RouteMapStop[RouteMapStopIndex] = end;
-        std::cout << "&&&&&&&&&&&&&&" << std::endl;
-        std::cout << "Distant: " << distant << std::endl;
 		//RouteMapTmp.push_back(Gp.adjList[end].data.StopName);
 
 		std::list<std::string> RouteMapTmp;
@@ -252,6 +269,9 @@ int XmlParser::FindBusRouteByIndex(int start, int end, int distant)
 	//RouteMapTmp.push_back(Gp.adjList[start].data.StopName);
 	RouteMapStop[RouteMapStopIndex] = start;
 	RouteMapStopIndex++;
+
+    //mark
+    VisitGp[start] = true;
 	EdgeNode *pTemp = Gp.adjList[start].firstedge;
 	while(pTemp)
 	{

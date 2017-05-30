@@ -1,11 +1,14 @@
 #ifndef __NETWORK_H__
 #define __NETWORK_H__
+#include "Protocol.h"
 #include <string>
+#include <iostream>
 #include <netinet/in.h>
 #include <sys/types.h>
 #include <sys/socket.h>
+#include <XmlParser.h>
 #define LENGTH_OF_QUEUE 20
-#define BUFFER_SIZE     1024
+#define BUFFER_SIZE     2048
 
 class SocketServer
 {

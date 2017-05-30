@@ -72,6 +72,9 @@ public:
 	std::string GetStopNameByIndex(int num);
 	int FindBusRoute(std::string start, std:: string end);
 	int FindBusRouteByIndex(int start, int end, int distance);
+	std::list<std::string>& GetMinRoute();
+	int GetMinDistant();
+	int GetMinRouteIndex();
 	void ShowList();
 private:
 	void clearRouteInfo();

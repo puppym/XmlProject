@@ -4,5 +4,5 @@ AM_CPPFLAGS = -std=c++11  -I/${TINYXML_ROOT}/include  -I/${TINYXML_ROOT}/include
 
 bin_PROGRAMS=Server
 
-Server_SOURCES=Server.cpp NetWork.cpp XmlParser.cpp
+Server_SOURCES=Server.cpp XmlParser.cpp NetWork.cpp AP_MessageData.cpp
 Server_LDADD= -lpthread $(TINYXML_ROOT)/lib/libtinyxml2.a $(TINYXML_ROOT)/lib/libtbsys.a

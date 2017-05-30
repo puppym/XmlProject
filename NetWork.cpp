@@ -6,6 +6,9 @@
 #include <unistd.h>
 #include <string.h>
 #include "NetWork.h"
+#include "AP_MessageData.h"
+
+
 bool SocketServer::SocketInit(std::string ip, int port)
 {
     bzero(&server_addr,sizeof(server_addr));
@@ -51,6 +54,12 @@ bool SocketServer::StartServer()
         //accept socket from clent
         socklen_t length = sizeof(client_addr);
         client_socket = accept(server_socket,(sockaddr*)&client_addr,&length);
+        if ( client_socket < 0)
+        {
+            printf("Server Accept Failed!\n");
+            break;
+        }
+        printf("连接建立\n");
 
         //创建子进程
         int ret = fork();
@@ -67,6 +76,7 @@ bool SocketServer::StartServer()
         //子进程
         case 0:
         {
+            printf("开始解析数据。。。\n");
             DealData(client_socket);
             close(client_socket);
             //这里是否需要中止进程？？？
@@ -88,6 +98,12 @@ bool SocketServer::StartServer()
 
 void SocketServer::DealData(int client_socket)
 {
+    XmlParser parser;
+    //mark
+    printf("XML 开始解析!\n");
+    parser.ReadXml("BusRoute.xml");
+    printf("XML 解析完成!\n");
+    //tmp.FindBusRoute("街道口","人民广场");
     while(1)
     {
         char buffer[BUFFER_SIZE] = "";
@@ -98,7 +114,24 @@ void SocketServer::DealData(int client_socket)
             printf("Server Receieve Data Failed!\n");
             continue;
         }
-        printf("%s\n",buffer);
+
+        Protocol *p = (Protocol*)buffer;
+        std::cout << "收到包的ID：" << p->event << std::endl;
+        MessageMap *ptmp = MessageMapData; 
+        while(NULL != ptmp->pfn)
+        {
+            if(p->event == ptmp->event)
+            {
+                std::cout << "校验后收到包的ID：" << p->event << std::endl;
+                ptmp->pfn(client_socket,parser,p);
+                break;
+            }
+        }
+        if(NULL == ptmp->pfn)
+        {
+            printf("未查找到该数据包");
+        }
+        
     }
 }
 
