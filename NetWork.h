@@ -8,7 +8,8 @@
 #include <sys/socket.h>
 #include <XmlParser.h>
 #define LENGTH_OF_QUEUE 20
-#define BUFFER_SIZE     2048
+//这个宏和tbsys.h中的宏有重复的地方
+#define BUFFER_SIZE     4096
 
 class SocketServer
 {

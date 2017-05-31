@@ -112,7 +112,7 @@ void SocketServer::DealData(int client_socket)
         if(length < 0)
         {
             printf("Server Receieve Data Failed!\n");
-            continue;
+            break;
         }
 
         Protocol *p = (Protocol*)buffer;
@@ -126,10 +126,11 @@ void SocketServer::DealData(int client_socket)
                 ptmp->pfn(client_socket,parser,p);
                 break;
             }
+            ptmp++;
         }
         if(NULL == ptmp->pfn)
         {
-            printf("未查找到该数据包");
+            printf("未查找到该数据包\n");
         }
         
     }

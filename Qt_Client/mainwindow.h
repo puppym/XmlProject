@@ -19,9 +19,10 @@ public:
 public slots:
    void changeRouteEdit(const QString &Route);
    void GetEditText();
+   void SendMainEditText();
 signals:
     void sendFindData(const QString&,const QString&);
-
+    void sendAddData(const QString&);
 
 private:
     Ui::MainWindow *ui;

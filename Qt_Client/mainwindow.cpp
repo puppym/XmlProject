@@ -13,8 +13,12 @@ MainWindow::MainWindow(QWidget *parent) :
     m_threadSocket = new ClientThread();
     connect(m_threadSocket,SIGNAL(changeRouteText(const QString &)),this,SLOT(changeRouteEdit(const QString &)),Qt::QueuedConnection);
     connect(this, SIGNAL(sendFindData(const QString&,const QString&)),m_threadSocket,SLOT(sendData(const QString&,const QString&)),Qt::QueuedConnection);
+    //void sendAddData(const QString&);
+    connect(this, SIGNAL(sendAddData(const QString&)),m_threadSocket,SLOT(receiveAddData(const QString&)),Qt::QueuedConnection);
     connect(ui->pushButton,SIGNAL(clicked()),this,SLOT(GetEditText()));
+    connect(ui->pushButton_2,SIGNAL(clicked()),this,SLOT(SendMainEditText()));
     m_threadSocket->start();
+    setWindowTitle(tr("公交路线查询系统"));
     //m_threadSocket->start();
     /*
     char str[1024] = "hello qt!";
@@ -36,8 +40,15 @@ void MainWindow::GetEditText()
     emit sendFindData(start,end);
 }
 
+void MainWindow::SendMainEditText()
+{
+    QString addRoute = ui->textEdit_route->toPlainText();
+    emit sendAddData(addRoute);
+}
+
 void MainWindow::changeRouteEdit(const QString &Route)
 {
+    //这里没清除
     ui->textEdit_route->clear();
     ui->textEdit_route->setText(Route);
 }

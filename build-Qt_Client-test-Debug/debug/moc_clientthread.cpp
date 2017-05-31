@@ -22,7 +22,7 @@ static const uint qt_meta_data_ClientThread[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-       5,   14, // methods
+       6,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -36,7 +36,8 @@ static const uint qt_meta_data_ClientThread[] = {
       39,   13,   13,   13, 0x0a,
       51,   13,   13,   13, 0x0a,
       82,   70,   13,   13, 0x0a,
-     139,  129,   13,   13, 0x0a,
+     137,  129,   13,   13, 0x0a,
+     171,  161,   13,   13, 0x0a,
 
        0        // eod
 };
@@ -45,6 +46,7 @@ static const char qt_meta_stringdata_ClientThread[] = {
     "ClientThread\0\0changeRouteText(QString)\0"
     "read_Data()\0receiveConnected()\0"
     "socketError\0receiveConnectedError(QTcpSocket::SocketError)\0"
+    "addData\0receiveAddData(QString)\0"
     "start,end\0sendData(QString,QString)\0"
 };
 
@@ -58,7 +60,8 @@ void ClientThread::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
         case 1: _t->read_Data(); break;
         case 2: _t->receiveConnected(); break;
         case 3: _t->receiveConnectedError((*reinterpret_cast< QTcpSocket::SocketError(*)>(_a[1]))); break;
-        case 4: _t->sendData((*reinterpret_cast< const QString(*)>(_a[1])),(*reinterpret_cast< const QString(*)>(_a[2]))); break;
+        case 4: _t->receiveAddData((*reinterpret_cast< const QString(*)>(_a[1]))); break;
+        case 5: _t->sendData((*reinterpret_cast< const QString(*)>(_a[1])),(*reinterpret_cast< const QString(*)>(_a[2]))); break;
         default: ;
         }
     }
@@ -96,9 +99,9 @@ int ClientThread::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 5)
+        if (_id < 6)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 5;
+        _id -= 6;
     }
     return _id;
 }

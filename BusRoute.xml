@@ -70,5 +70,26 @@
                 <Distance>30</Distance>
             </Stop>
         </Route>
+    </Bus>
+    <Bus>
+        <Number>5号线</Number>
+        <Route>
+            <Stop>
+                <Name>梨园</Name>
+                <Distance>0</Distance>
+            </Stop>
+            <Stop>
+                <Name>街道口</Name>
+                <Distance>10</Distance>
+            </Stop>
+            <Stop>
+                <Name>武昌火车站</Name>
+                <Distance>20</Distance>
+            </Stop>
+            <Stop>
+                <Name>幸福大道</Name>
+                <Distance>30</Distance>
+            </Stop>
+        </Route>
     </Bus> 
 </BusRoute>

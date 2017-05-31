@@ -29,7 +29,7 @@ struct FindRouteAck
 struct AddRouteRequest
 {
 	int distant;               //距离起点站的距离
-	char szRouteName[255];     //几号线
+	char szRouteName[1024];     //几号线
 	char szStopName[255];      //站点名
 };
 
